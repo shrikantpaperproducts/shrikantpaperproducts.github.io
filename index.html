@@ -828,8 +828,8 @@ let currentFilter = { brand:'all', cat:'all', sort:'featured' };
 async function loadProducts() {
   try {
     const [r1, r2] = await Promise.all([
-      fetch('https://rutunjay651.github.io/spp/website/doms.json'),
-      fetch('https://rutunjay651.github.io/spp/website/youva.json')
+      fetch('https://shrikantpaperproducts.github.io/resources/doms.json'),
+      fetch('https://shrikantpaperproducts.github.io/resources/youva.json')
     ]);
     if (!r1.ok) throw new Error('doms.json ' + r1.status);
     if (!r2.ok) throw new Error('youva.json ' + r2.status);
