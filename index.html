@@ -9,7 +9,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary:#e63329; --secondary:#f7941d; --dark:#1a1a2e;
+      --primary:#f7941d; --secondary:#e63329; --dark:#1a1a2e;
       --light:#f9f9f9; --white:#ffffff; --gray:#6c757d;
       --light-gray:#f3f4f6; --border:#e2e8f0;
       --shadow:0 4px 24px rgba(0,0,0,.10); --radius:12px;
@@ -26,7 +26,7 @@
     header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 16px rgba(0,0,0,.08);}
     .header-inner{max-width:1300px;margin:auto;display:flex;align-items:center;padding:14px 24px;gap:20px;}
     .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
-    .logo-icon{width:52px;height:52px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(230,51,41,.3);}
+    .logo-icon{width:52px;height:52px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(247,148,29,.3);}
     .logo-icon img{width:100%;height:100%;object-fit:contain;background:#fff;}
     .logo-text{line-height:1.15;}
     .logo-text .brand-name{font-size:1.15rem;font-weight:800;color:var(--dark);}
@@ -36,7 +36,7 @@
     .search-bar{flex:1;display:flex;background:var(--light-gray);border:2px solid transparent;border-radius:50px;overflow:visible;transition:border .25s;position:relative;}
     .search-bar:focus-within{border-color:var(--primary);}
     .search-bar input{flex:1;border:none;background:transparent;padding:10px 18px;font-family:inherit;font-size:.9rem;outline:none;color:var(--dark);border-radius:50px 0 0 50px;}
-    .search-bar button{background:var(--primary);border:none;cursor:pointer;color:#fff;padding:0 22px;font-size:1rem;transition:background .25s;border-radius:0 50px 50px 0;flex-shrink:0;}
+    .search-bar button{background:var(--secondary);border:none;cursor:pointer;color:#fff;padding:0 22px;font-size:1rem;transition:background .25s;border-radius:0 50px 50px 0;flex-shrink:0;}
     .search-bar button:hover{background:#c0211a;}
 
     /* SEARCH DROPDOWN */
@@ -49,9 +49,7 @@
     .sri-info{flex:1;min-width:0;}
     .sri-name{font-size:.84rem;font-weight:600;color:var(--dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;}
     .sri-meta{display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--gray);flex-wrap:wrap;}
-    .sri-brand{font-weight:700;font-size:.68rem;padding:2px 8px;border-radius:50px;}
-    .sri-brand.doms{background:#1a1a2e;color:#fff;}
-    .sri-brand.youva{background:var(--primary);color:#fff;}
+    .sri-brand-logo{height:18px;width:auto;object-fit:contain;}
     .sri-code{font-size:.68rem;color:var(--gray);font-family:monospace;background:var(--light-gray);padding:1px 6px;border-radius:4px;}
     .sri-price{font-weight:700;color:var(--dark);font-size:.82rem;}
     .sri-mrp{text-decoration:line-through;color:var(--gray);font-size:.72rem;}
@@ -63,13 +61,14 @@
     .search-view-all{display:block;text-align:center;padding:10px;font-size:.8rem;font-weight:700;color:var(--primary);cursor:pointer;border-top:1px solid var(--border);}
     .search-view-all:hover{background:var(--light-gray);}
 
-    /* HEADER ACTIONS */
-    .header-actions{display:flex;align-items:center;gap:6px;}
-    .hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:10px;cursor:pointer;background:transparent;border:none;font-family:inherit;color:var(--dark);font-size:.7rem;font-weight:500;transition:background .2s,color .2s;text-decoration:none;}
-    .hdr-btn i{font-size:1.2rem;color:var(--primary);}
-    .hdr-btn:hover{background:#fef2f1;}
+    /* HEADER ACTIONS - Updated icons style */
+    .header-actions{display:flex;align-items:center;gap:16px;}
+    .hdr-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;background:transparent;border:none;font-family:inherit;color:var(--dark);font-size:.7rem;font-weight:600;transition:color .2s;text-decoration:none;position:relative;}
+    .hdr-btn svg{width:26px;height:26px;stroke:var(--dark);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+    .hdr-btn:hover svg{stroke:var(--primary);}
+    .hdr-btn:hover{color:var(--primary);}
     .cart-wrap{position:relative;}
-    .cart-badge{position:absolute;top:2px;right:10px;background:var(--secondary);color:#fff;border-radius:50%;width:17px;height:17px;font-size:.58rem;font-weight:700;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+    .cart-badge{position:absolute;top:-8px;right:-10px;background:#2563eb;color:#fff;border-radius:50%;width:20px;height:20px;font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center;pointer-events:none;border:2px solid #fff;}
 
     /* NAV */
     nav{background:var(--dark);border-top:3px solid var(--primary);}
@@ -90,11 +89,12 @@
     .slide-text{max-width:540px;}
     .slide-badge{display:inline-block;background:var(--primary);color:#fff;font-size:.7rem;font-weight:700;padding:5px 16px;border-radius:50px;margin-bottom:14px;text-transform:uppercase;letter-spacing:1.5px;}
     .slide-title{font-size:2.6rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px;}
-    .slide-title span{color:var(--secondary);}
+    .slide-title span.orange{color:var(--primary);}
+    .slide-title span.darkblue{color:#0f3460;}
     .slide-desc{font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:28px;line-height:1.7;}
     .slide-btns{display:flex;gap:14px;flex-wrap:wrap;}
     .btn-hero-primary{background:var(--primary);color:#fff;padding:13px 32px;border-radius:50px;font-family:inherit;font-size:.88rem;font-weight:700;border:2px solid var(--primary);cursor:pointer;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
-    .btn-hero-primary:hover{background:#c0211a;border-color:#c0211a;transform:translateY(-2px);}
+    .btn-hero-primary:hover{background:#e08010;border-color:#e08010;transform:translateY(-2px);}
     .btn-hero-outline{background:transparent;color:#fff;padding:13px 32px;border-radius:50px;font-family:inherit;font-size:.88rem;font-weight:700;border:2px solid rgba(255,255,255,.7);cursor:pointer;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
     .btn-hero-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
     .slide-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.3);color:#fff;width:50px;height:50px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s;}
@@ -105,21 +105,28 @@
     .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:all .3s;}
     .dot.active{background:#fff;width:26px;border-radius:4px;}
 
+    /* TYPEWRITER ANIMATION */
+    .typewriter-line{display:block;overflow:hidden;white-space:nowrap;width:0;animation:typing 1s steps(30,end) forwards;}
+    .typewriter-line:nth-child(1){animation-delay:0.2s;}
+    .typewriter-line:nth-child(2){animation-delay:1.3s;}
+    .typewriter-line:nth-child(3){animation-delay:2.4s;}
+    @keyframes typing{from{width:0;}to{width:100%;}}
+
     /* TRUST BAR */
     .trust-bar{background:var(--white);border-top:3px solid var(--primary);border-bottom:1px solid var(--border);}
     .trust-inner{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0 24px;}
     .trust-item{display:flex;align-items:center;gap:14px;padding:20px 16px;border-right:1px solid var(--border);}
     .trust-item:last-child{border-right:none;}
-    .trust-icon{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#fef2f1,#fde8d8);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--primary);flex-shrink:0;}
+    .trust-icon{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#fff8f0,#fde8c8);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--primary);flex-shrink:0;}
     .trust-text .t-title{font-size:.88rem;font-weight:700;color:var(--dark);}
     .trust-text .t-sub{font-size:.72rem;color:var(--gray);margin-top:1px;}
 
     /* SECTIONS */
     .section{padding:56px 24px;max-width:1300px;margin:auto;}
     .sec-header{text-align:center;margin-bottom:40px;}
-    .sec-badge{display:inline-block;background:linear-gradient(135deg,#fef2f1,#fde8d8);color:var(--primary);font-size:.72rem;font-weight:700;padding:5px 16px;border-radius:50px;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px;}
+    .sec-badge{display:inline-block;background:linear-gradient(135deg,#fff8f0,#fde8c8);color:var(--primary);font-size:.72rem;font-weight:700;padding:5px 16px;border-radius:50px;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px;}
     .sec-title{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:10px;}
-    .sec-title span{color:var(--primary);}
+    .sec-title span{color:var(--secondary);}
     .sec-line{width:60px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));margin:0 auto 14px;}
     .sec-sub{font-size:.9rem;color:var(--gray);max-width:540px;margin:auto;}
 
@@ -135,13 +142,13 @@
     .brand-card-info .bc-desc{font-size:.83rem;color:var(--gray);line-height:1.6;margin-bottom:16px;}
     .brand-card-info .bc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
     .bc-tag{background:var(--light-gray);color:var(--dark);font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:50px;}
-    .btn-brand{display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:700;font-size:.85rem;text-decoration:none;border:2px solid var(--primary);padding:9px 22px;border-radius:50px;transition:all .25s;}
-    .btn-brand:hover{background:var(--primary);color:#fff;}
+    .btn-brand{display:inline-flex;align-items:center;gap:8px;color:var(--secondary);font-weight:700;font-size:.85rem;text-decoration:none;border:2px solid var(--secondary);padding:9px 22px;border-radius:50px;transition:all .25s;}
+    .btn-brand:hover{background:var(--secondary);color:#fff;}
 
     /* CATEGORY GRID */
     .category-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
     .cat-card{background:var(--white);border-radius:var(--radius);padding:18px 10px;text-align:center;cursor:pointer;border:2px solid transparent;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .25s;overflow:hidden;}
-    .cat-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 24px rgba(230,51,41,.15);}
+    .cat-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 24px rgba(247,148,29,.15);}
     .cat-icon{width:68px;height:68px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--light-gray);display:flex;align-items:center;justify-content:center;}
     .cat-icon img{width:100%;height:100%;object-fit:cover;}
     .cat-name{font-size:.78rem;font-weight:700;color:var(--dark);margin-bottom:3px;}
@@ -161,20 +168,22 @@
     .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,.13);}
     .prod-badge{position:absolute;top:12px;left:12px;z-index:5;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;}
     .badge-new{background:#10b981;color:#fff;}
-    .badge-sale{background:var(--primary);color:#fff;}
-    .badge-hot{background:var(--secondary);color:#fff;}
+    .badge-sale{background:var(--secondary);color:#fff;}
+    .badge-hot{background:var(--primary);color:#fff;}
     .badge-top{background:#7c3aed;color:#fff;}
     .badge-stellar{background:#0f3460;color:#fff;}
     .badge-hq{background:#1a1a2e;color:#fff;}
-    .prod-brand-tag{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-radius:6px;padding:3px 9px;font-size:.62rem;font-weight:700;letter-spacing:.5px;}
-    .prod-brand-tag.doms{color:#1a1a2e;border:1.5px solid #1a1a2e;}
-    .prod-brand-tag.youva{color:var(--primary);border:1.5px solid var(--primary);}
+
+    /* Brand logo tag on product card */
+    .prod-brand-tag{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:8px;padding:4px 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+    .prod-brand-tag img{height:20px;width:auto;object-fit:contain;}
+
     .prod-img{height:210px;position:relative;overflow:hidden;background:var(--light-gray);display:flex;align-items:center;justify-content:center;}
     .prod-img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform .4s;}
     .product-card:hover .prod-img img{transform:scale(1.07);}
     .prod-wishlist{position:absolute;bottom:12px;right:12px;z-index:5;width:34px;height:34px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;color:var(--gray);transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1);}
-    .prod-wishlist:hover{color:var(--primary);border-color:var(--primary);}
-    .prod-wishlist.active{color:var(--primary);}
+    .prod-wishlist:hover{color:var(--secondary);border-color:var(--secondary);}
+    .prod-wishlist.active{color:var(--secondary);}
     .prod-body{padding:16px;}
     .prod-category{font-size:.68rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;}
     .prod-code{font-size:.62rem;color:var(--gray);font-family:monospace;margin-bottom:6px;}
@@ -187,10 +196,19 @@
     .prod-mrp{font-size:.78rem;color:var(--gray);text-decoration:line-through;}
     .prod-off{font-size:.72rem;font-weight:700;color:#10b981;}
     .prod-price-na{font-size:.82rem;color:var(--gray);font-style:italic;}
-    .btn-add-cart{width:100%;padding:10px;border-radius:8px;background:linear-gradient(135deg,var(--primary),#c0211a);color:#fff;border:none;font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s;}
+
+    /* VIEW BUTTON (replaces add to cart / enquire) */
+    .btn-view{width:100%;padding:10px;border-radius:8px;background:linear-gradient(135deg,var(--primary),#e08010);color:#fff;border:none;font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s;}
+    .btn-view:hover{transform:scale(1.02);box-shadow:0 6px 18px rgba(247,148,29,.35);}
+
+    /* ADD TO CART button - kept for static featured cards */
+    .btn-add-cart{width:100%;padding:10px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),#c0211a);color:#fff;border:none;font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s;}
     .btn-add-cart:hover{transform:scale(1.02);box-shadow:0 6px 18px rgba(230,51,41,.35);}
-    .btn-enquire{width:100%;padding:10px;border-radius:8px;background:transparent;color:var(--primary);border:2px solid var(--primary);font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s;}
-    .btn-enquire:hover{background:var(--primary);color:#fff;}
+
+    /* VIEW ALL BUTTON */
+    .view-all-wrap{text-align:center;margin-top:32px;}
+    .btn-view-all{display:inline-flex;align-items:center;gap:10px;padding:13px 36px;border-radius:50px;background:var(--white);border:2px solid var(--primary);color:var(--primary);font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .25s;}
+    .btn-view-all:hover{background:var(--primary);color:#fff;}
 
     /* SEARCH RESULTS PAGE */
     #searchResultsSection{display:none;padding:40px 24px;max-width:1300px;margin:auto;}
@@ -210,11 +228,7 @@
     .promo-card-label{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
     .promo-card-title{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:10px;}
     .promo-card-btn{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;padding:7px 18px;border-radius:50px;font-size:.75rem;font-weight:700;text-decoration:none;width:fit-content;transition:background .25s;}
-    .promo-card-btn:hover{background:#c0211a;}
-
-    /* BESTSELLERS */
-    .bestsellers-wrap{background:var(--light-gray);padding:56px 0;}
-    .bestsellers-inner{max-width:1300px;margin:auto;padding:0 24px;}
+    .promo-card-btn:hover{background:#e08010;}
 
     /* NEWSLETTER */
     .newsletter{background:linear-gradient(135deg,var(--dark) 0%,#0f3460 100%);padding:64px 24px;text-align:center;}
@@ -226,7 +240,7 @@
     .nl-form input::placeholder{color:rgba(255,255,255,.5);}
     .nl-form input:focus{border-color:var(--secondary);}
     .nl-form button{padding:14px 28px;border-radius:50px;background:var(--secondary);color:#fff;border:none;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .25s;}
-    .nl-form button:hover{background:#d97e0e;}
+    .nl-form button:hover{background:#c0211a;}
     .nl-note{font-size:.72rem;color:rgba(255,255,255,.5);}
 
     /* FOOTER */
@@ -247,7 +261,7 @@
     .footer-links a:hover{color:#fff;}
     .footer-contact{display:flex;flex-direction:column;gap:14px;}
     .contact-item{display:flex;align-items:flex-start;gap:12px;}
-    .contact-item .ci-icon{width:34px;height:34px;border-radius:8px;background:rgba(230,51,41,.2);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+    .contact-item .ci-icon{width:34px;height:34px;border-radius:8px;background:rgba(247,148,29,.2);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
     .contact-item .ci-text .ci-label{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.8px;}
     .contact-item .ci-text .ci-val{font-size:.8rem;color:rgba(255,255,255,.8);margin-top:2px;}
     .footer-bottom{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 0;flex-wrap:wrap;gap:12px;}
@@ -255,18 +269,22 @@
     .footer-bottom .pay-icons{display:flex;gap:8px;}
     .pay-icon{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:4px 10px;border-radius:6px;font-size:.7rem;font-weight:600;}
 
-    /* FLOATING & TOAST */
-    .floating-cart{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--primary);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 6px 24px rgba(230,51,41,.45);border:none;font-family:inherit;transition:transform .25s;}
+    /* FLOATING CART */
+    .floating-cart{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--secondary);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 6px 24px rgba(230,51,41,.45);border:none;font-family:inherit;transition:transform .25s;}
     .floating-cart:hover{transform:scale(1.1);}
-    .floating-badge{position:absolute;top:-4px;right:-4px;background:var(--secondary);color:#fff;width:20px;height:20px;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+    .floating-badge{position:absolute;top:-4px;right:-4px;background:#2563eb;color:#fff;width:20px;height:20px;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+    /* TOAST */
     .toast{position:fixed;bottom:100px;right:28px;z-index:2000;background:var(--dark);color:#fff;padding:12px 20px;border-radius:10px;font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);transform:translateX(120%);transition:transform .35s;border-left:4px solid #10b981;}
     .toast.show{transform:translateX(0);}
     .toast i{color:#10b981;}
-    .back-top{position:fixed;bottom:100px;left:28px;z-index:999;background:var(--white);color:var(--dark);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);border:2px solid var(--border);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;}
-    .back-top.visible{opacity:1;pointer-events:all;}
-    .back-top:hover{transform:translateY(-3px);color:var(--primary);border-color:var(--primary);}
 
-    /* LOADING SPINNER */
+    /* BACK TO TOP - centered at bottom */
+    .back-top{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:999;background:var(--white);color:var(--dark);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);border:2px solid var(--border);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;}
+    .back-top.visible{opacity:1;pointer-events:all;transform:translateX(-50%);}
+    .back-top:hover{color:var(--primary);border-color:var(--primary);}
+
+    /* LOADING / EMPTY STATES */
     .loading-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);}
     .loading-state i{font-size:2.5rem;color:var(--primary);display:block;margin-bottom:14px;}
     .empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);}
@@ -297,7 +315,7 @@
     <a href="#" class="logo-wrap">
       <div class="logo-icon">
         <img src="https://www.navneetstore.com/cdn/shop/files/youva_logo.png?v=1683Views"
-             onerror="this.onerror=null;this.src='https://placehold.co/52x52/e63329/ffffff?text=SPP';"
+             onerror="this.onerror=null;this.src='https://placehold.co/52x52/f7941d/ffffff?text=SPP';"
              alt="Shrikant Paper Products"/>
       </div>
       <div class="logo-text">
@@ -311,45 +329,63 @@
       <input type="text" id="searchInput"
              placeholder="Search by name, code, category…"
              autocomplete="off"/>
-      <button id="searchBtn"><i class="fas fa-search"></i></button>
+      <button id="searchBtn">
+        <!-- Search icon SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
       <div id="searchDropdown"></div>
     </div>
 
+    <!-- HEADER ACTIONS - Account (no text label), Cart with blue badge -->
     <div class="header-actions">
-      <a href="#" class="hdr-btn"><i class="fas fa-user"></i>Account</a>
-      <a href="#" class="hdr-btn"><i class="fas fa-heart"></i>Wishlist</a>
+      <!-- Account icon only -->
+      <a href="#" class="hdr-btn" title="Account">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </a>
+      <!-- Cart icon with blue badge -->
       <div class="cart-wrap">
-        <a href="#" class="hdr-btn" onclick="openCart()"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a href="#" class="hdr-btn" onclick="openCart()" title="Cart">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </a>
         <span class="cart-badge" id="cartBadge">0</span>
       </div>
     </div>
   </div>
 </header>
 
-<!-- NAV -->
+<!-- NAV - removed art supplies, school essentials, office supplies, gift sets -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-link active"><i class="fas fa-home"></i>Home</a>
     <a href="#doms-section" class="nav-link"><i class="fas fa-pencil-alt"></i>DOMS</a>
     <a href="#youva-section" class="nav-link"><i class="fas fa-book"></i>Youva</a>
     <a href="#categories" class="nav-link"><i class="fas fa-th-large"></i>Categories</a>
-    <a href="#" class="nav-link"><i class="fas fa-palette"></i>Art Supplies</a>
-    <a href="#" class="nav-link"><i class="fas fa-graduation-cap"></i>School Essentials</a>
-    <a href="#" class="nav-link"><i class="fas fa-briefcase"></i>Office Supplies</a>
-    <a href="#" class="nav-link"><i class="fas fa-gift"></i>Gift Sets</a>
   </div>
 </nav>
 
-<!-- HERO SLIDER -->
+<!-- HERO SLIDER - 2 slides only (removed slide 2, kept 1 and original 3) -->
 <div class="hero">
   <div class="slides" id="slides">
+
+    <!-- Slide 1 - Youva -->
     <div class="slide">
       <div class="slide-bg" style="background-image:url('https://www.navneetstore.com/cdn/shop/files/youva_main_banner_1.jpg');"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-text">
           <div class="slide-badge">Youva by Navneet</div>
-          <div class="slide-title">Write Better.<br><span>Think Brighter.</span><br>Create More.</div>
+          <div class="slide-title" id="slide1-title">
+            <span class="typewriter-line">Write Better.</span>
+            <span class="typewriter-line"><span class="orange">Think Brighter.</span></span>
+            <span class="typewriter-line">Create More.</span>
+          </div>
           <div class="slide-desc">Vivid, vibrant stationery for students and creative minds — notebooks, colours, art kits and more.</div>
           <div class="slide-btns">
             <a href="#youva-section" class="btn-hero-primary"><i class="fas fa-shopping-bag"></i>Shop Youva</a>
@@ -358,28 +394,19 @@
         </div>
       </div>
     </div>
+
+    <!-- Slide 2 (was slide 3) - DOMS Art Collection -->
     <div class="slide">
-      <div class="slide-bg" style="background-image:url('https://domsindia.com/wp-content/uploads/2023/03/DOMS-Web-Banner-scaled.jpg');background-color:#1a1a2e;"></div>
-      <div class="slide-overlay" style="background:linear-gradient(90deg,rgba(26,26,46,.88) 0%,rgba(26,26,46,.35) 60%,transparent 100%);"></div>
-      <div class="slide-content">
-        <div class="slide-text">
-          <div class="slide-badge">DOMS Stationery</div>
-          <div class="slide-title">Pioneer in<br><span>Quality</span><br>Stationery</div>
-          <div class="slide-desc">DOMS — India's trusted stationery brand since 1976. Pencils, colours, art kits and more.</div>
-          <div class="slide-btns">
-            <a href="#doms-section" class="btn-hero-primary"><i class="fas fa-pencil-alt"></i>Shop DOMS</a>
-            <a href="#" class="btn-hero-outline">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="slide-bg" style="background-image:url('https://domsindia.com/wp-content/uploads/2024/01/DOMS-Banner-Art-Materials.jpg');background-color:#0f3460;"></div>
+      <div class="slide-bg" style="background-color:#0f3460;"></div>
       <div class="slide-overlay" style="background:linear-gradient(90deg,rgba(15,52,96,.9) 0%,rgba(15,52,96,.35) 60%,transparent 100%);"></div>
       <div class="slide-content">
         <div class="slide-text">
           <div class="slide-badge">DOMS Art Collection</div>
-          <div class="slide-title">Every Ambition<br><span>Needs</span><br>Preparation.</div>
+          <div class="slide-title" id="slide2-title">
+            <span class="typewriter-line">Every Ambition</span>
+            <span class="typewriter-line"><span class="darkblue" style="color:#0f3460;background:rgba(255,255,255,0.85);padding:0 6px;border-radius:4px;">Needs</span></span>
+            <span class="typewriter-line">Preparation.</span>
+          </div>
           <div class="slide-desc">Explore DOMS' complete range — oil pastels, watercolours, sketch pens, geometry boxes and creative kits.</div>
           <div class="slide-btns">
             <a href="#doms-section" class="btn-hero-primary"><i class="fas fa-palette"></i>Explore Art Kits</a>
@@ -388,13 +415,13 @@
         </div>
       </div>
     </div>
+
   </div>
   <button class="slide-arrow prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
   <button class="slide-arrow next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
   <div class="slide-dots" id="slideDots">
     <div class="dot active" onclick="goSlide(0)"></div>
     <div class="dot" onclick="goSlide(1)"></div>
-    <div class="dot" onclick="goSlide(2)"></div>
   </div>
 </div>
 
@@ -420,7 +447,7 @@
   </div>
 </div>
 
-<!-- SEARCH RESULTS SECTION (hidden by default, shown on search) -->
+<!-- SEARCH RESULTS SECTION -->
 <div id="searchResultsSection">
   <div class="search-results-bar">
     <div class="search-results-title" id="searchResultsTitle">Results for "<span></span>"</div>
@@ -440,27 +467,27 @@
     </div>
     <div class="category-grid">
       <div class="cat-card" onclick="filterByCat('notebooks')">
-        <div class="cat-icon"><img src="https://www.navneetstore.com/cdn/shop/products/Youva_Spiral_Longbook_2.jpg" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=NB';" alt=""/></div>
+        <div class="cat-icon"><img src="https://www.navneetstore.com/cdn/shop/products/Youva_Spiral_Longbook_2.jpg" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=NB';" alt=""/></div>
         <div class="cat-name">Notebooks</div><div class="cat-count" id="cnt-notebooks">— products</div>
       </div>
       <div class="cat-card" onclick="filterByCat('pencils')">
-        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/ZOOM-ULTIMATE-DARK-PENCIL-BOX-PACK.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=PEN';" alt=""/></div>
+        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/ZOOM-ULTIMATE-DARK-PENCIL-BOX-PACK.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=PEN';" alt=""/></div>
         <div class="cat-name">Pencils</div><div class="cat-count" id="cnt-pencils">— products</div>
       </div>
       <div class="cat-card" onclick="filterByCat('colours')">
-        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/Colour-Pencils-24-Shades.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=CLR';" alt=""/></div>
+        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/Colour-Pencils-24-Shades.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=CLR';" alt=""/></div>
         <div class="cat-name">Colours</div><div class="cat-count" id="cnt-colours">— products</div>
       </div>
       <div class="cat-card" onclick="filterByCat('kits')">
-        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/Fun-Fiesta-Kit.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=KIT';" alt=""/></div>
+        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/Fun-Fiesta-Kit.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=KIT';" alt=""/></div>
         <div class="cat-name">Art Kits</div><div class="cat-count" id="cnt-kits">— products</div>
       </div>
       <div class="cat-card" onclick="filterByCat('markers')">
-        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/SKETCH-MAX-JUMBO-SKETCH-PEN-12-Shades.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=MKR';" alt=""/></div>
+        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/SKETCH-MAX-JUMBO-SKETCH-PEN-12-Shades.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=MKR';" alt=""/></div>
         <div class="cat-name">Sketch / Markers</div><div class="cat-count" id="cnt-markers">— products</div>
       </div>
       <div class="cat-card" onclick="filterByCat('geometry_boxes')">
-        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/GEOMMY-Mathematical-Drawing-Instrument-Box.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/e63329?text=GEO';" alt=""/></div>
+        <div class="cat-icon"><img src="https://domsindia.com/wp-content/uploads/2023/04/GEOMMY-Mathematical-Drawing-Instrument-Box.png" onerror="this.src='https://placehold.co/68x68/f3f4f6/f7941d?text=GEO';" alt=""/></div>
         <div class="cat-name">Geometry Box</div><div class="cat-count" id="cnt-geometry_boxes">— products</div>
       </div>
     </div>
@@ -496,7 +523,7 @@
       <div class="brand-card" id="youva-section">
         <div class="brand-card-bg">
           <img src="https://www.navneetstore.com/cdn/shop/files/youva_main_banner_1.jpg"
-               onerror="this.src='https://placehold.co/700x220/e63329/ffffff?text=Youva+by+Navneet';" alt="Youva"/>
+               onerror="this.src='https://placehold.co/700x220/f7941d/ffffff?text=Youva+by+Navneet';" alt="Youva"/>
         </div>
         <div class="brand-card-info">
           <div class="bc-name">Youva by Navneet</div>
@@ -524,13 +551,16 @@
     </div>
     <div class="filter-bar">
       <div class="filter-tabs">
-        <button class="filter-tab active" onclick="filterTab(this,'all')">All Products</button>
+        <!-- Renamed "All Products" to "Popular", other tabs match category names -->
+        <button class="filter-tab active" onclick="filterTab(this,'popular')">Popular</button>
         <button class="filter-tab" onclick="filterTab(this,'doms')">DOMS</button>
         <button class="filter-tab" onclick="filterTab(this,'youva')">Youva</button>
         <button class="filter-tab" onclick="filterTab(this,'notebooks')">Notebooks</button>
         <button class="filter-tab" onclick="filterTab(this,'colours')">Colours</button>
         <button class="filter-tab" onclick="filterTab(this,'pencils')">Pencils</button>
-        <button class="filter-tab" onclick="filterTab(this,'kits')">Kits</button>
+        <button class="filter-tab" onclick="filterTab(this,'kits')">Art Kits</button>
+        <button class="filter-tab" onclick="filterTab(this,'markers')">Sketch / Markers</button>
+        <button class="filter-tab" onclick="filterTab(this,'geometry_boxes')">Geometry Box</button>
       </div>
       <select class="sort-select" id="sortSelect" onchange="applySort()">
         <option value="featured">Sort: Featured</option>
@@ -539,142 +569,17 @@
         <option value="name">Name: A–Z</option>
       </select>
     </div>
-    <!-- 8 static featured cards kept in HTML -->
     <div class="product-grid" id="productGrid">
-      <div class="product-card" data-brand="doms" data-cat="pencils">
-        <span class="prod-badge badge-top">Top Seller</span>
-        <span class="prod-brand-tag doms">DOMS</span>
-        <div class="prod-img">
-          <img src="https://domsindia.com/cdn/shop/products/zoom-pencil.jpg"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/1a1a2e?text=DOMS+Pencil';" alt="Zoom Pencil"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">DOMS · Pencils</div>
-          <div class="prod-code">DM-ZOOM-PENCIL</div>
-          <div class="prod-name">Zoom Pencil</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.0)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹60</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'DOMS Zoom Pencil')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
+      <div class="loading-state">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading products…</p>
       </div>
-      <div class="product-card" data-brand="doms" data-cat="colours">
-        <span class="prod-badge badge-hot">Hot</span>
-        <span class="prod-brand-tag doms">DOMS</span>
-        <div class="prod-img">
-          <img src="https://domsindia.com/cdn/shop/products/oil-pastel-25s-120.jpg"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/1a1a2e?text=DOMS+Oil+Pastels';" alt="Oil Pastels"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">DOMS · Colours</div>
-          <div class="prod-code">DM-OIL-PASTEL-25S-120</div>
-          <div class="prod-name">Oil Pastel – 25 Shades</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.0)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹120</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'DOMS Oil Pastel 25 Shades')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="doms" data-cat="kits">
-        <span class="prod-badge badge-new">New</span>
-        <span class="prod-brand-tag doms">DOMS</span>
-        <div class="prod-img">
-          <img src="https://domsindia.com/cdn/shop/products/fun-fiesta-kit.jpg"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/1a1a2e?text=DOMS+Fun+Fiesta';" alt="Fun Fiesta Kit"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">DOMS · Kits</div>
-          <div class="prod-code">DM-FUN-FIESTA-KIT</div>
-          <div class="prod-name">Fun Fiesta Kit</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.0)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹100</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'DOMS Fun Fiesta Kit')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="youva" data-cat="notebooks">
-        <span class="prod-badge badge-top">Top Seller</span>
-        <span class="prod-brand-tag youva">Youva</span>
-        <div class="prod-img">
-          <img src="https://www.navneetstore.com/cdn/shop/files/Design2edited_30d3b8ac-8892-4699-b98b-c86ff195b24c.png"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/e63329?text=Youva+Long+Book';" alt="Spiral Long Book"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">Youva · Long Books</div>
-          <div class="prod-code">23676</div>
-          <div class="prod-name">Spiral Long Book A4 Unruled 240pg</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.5)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹140</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'Youva Spiral Long Book A4 240pg')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="youva" data-cat="notebooks">
-        <span class="prod-badge badge-new">New</span>
-        <span class="prod-brand-tag youva">Youva</span>
-        <div class="prod-img">
-          <img src="https://www.navneetstore.com/cdn/shop/files/Dimension_e83098d9-6040-4b55-9e27-5814549010ad.png"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/e63329?text=Youva+Magnetic';" alt="Magnetic Notebook"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">Youva · Notebooks</div>
-          <div class="prod-code">23755</div>
-          <div class="prod-name">CBNB Magnetic A5 Single Line 192P</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.5)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹130</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'Youva CBNB Magnetic A5 192P')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="doms" data-cat="geometry_boxes">
-        <span class="prod-brand-tag doms">DOMS</span>
-        <div class="prod-img">
-          <img src="https://domsindia.com/cdn/shop/products/g-box-geommy-math.jpg"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/1a1a2e?text=DOMS+Geometry';" alt="Geommy Math Box"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">DOMS · Geometry Box</div>
-          <div class="prod-code">DM-G-BOX-GEOMMY-MATH</div>
-          <div class="prod-name">G Box Geommy Math</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.0)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹90</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'DOMS G Box Geommy Math')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="youva" data-cat="notebooks">
-        <span class="prod-brand-tag youva">Youva</span>
-        <div class="prod-img">
-          <img src="https://www.navneetstore.com/cdn/shop/files/Front1.png"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/e63329?text=Youva+HQ';" alt="HQ Book"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">Youva · HQ Series</div>
-          <div class="prod-code">27002</div>
-          <div class="prod-name">HQ 1 Subject Book A5 SL 160P Black</div>
-          <div class="prod-rating"><div class="stars">★★★★★</div><span class="rating-count">(4.5)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹120</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'Youva HQ 1 Subject Book A5')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
-      <div class="product-card" data-brand="doms" data-cat="colours">
-        <span class="prod-badge badge-sale">Sale</span>
-        <span class="prod-brand-tag doms">DOMS</span>
-        <div class="prod-img">
-          <img src="https://domsindia.com/cdn/shop/products/wax-crayons-16-shades.jpg"
-               onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/1a1a2e?text=DOMS+Wax+Crayons';" alt="Wax Crayons"/>
-          <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-category">DOMS · Colours</div>
-          <div class="prod-code">DM-WAX-CRAYONS-16-SHADES</div>
-          <div class="prod-name">Wax Crayons – 16 Shades</div>
-          <div class="prod-rating"><div class="stars">★★★★☆</div><span class="rating-count">(4.0)</span></div>
-          <div class="prod-price-row"><div class="prod-price">₹40</div></div>
-          <button class="btn-add-cart" onclick="addToCart(this,'DOMS Wax Crayons 16 Shades')"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </div>
+    </div>
+    <!-- View All button -->
+    <div class="view-all-wrap" id="viewAllWrap" style="display:none;">
+      <button class="btn-view-all" onclick="showAllProducts()">
+        <i class="fas fa-th-large"></i> View All Products
+      </button>
     </div>
   </div>
 </div>
@@ -691,7 +596,7 @@
       </div>
     </div>
     <div class="promo-card">
-      <img src="https://www.navneetstore.com/cdn/shop/files/youva_main_banner_1.jpg" onerror="this.src='https://placehold.co/450x200/e63329/ffffff?text=Youva';" alt=""/>
+      <img src="https://www.navneetstore.com/cdn/shop/files/youva_main_banner_1.jpg" onerror="this.src='https://placehold.co/450x200/f7941d/ffffff?text=Youva';" alt=""/>
       <div class="promo-card-overlay">
         <div class="promo-card-label">Youva Collection</div>
         <div class="promo-card-title">Vibrant Notebooks for Creators</div>
@@ -729,7 +634,7 @@
       <a href="#" class="logo-wrap">
         <div class="footer-logo-icon">
           <img src="https://www.navneetstore.com/cdn/shop/files/youva_logo.png?v=1683Views"
-               onerror="this.src='https://placehold.co/52x52/e63329/ffffff?text=SPP';" alt=""/>
+               onerror="this.src='https://placehold.co/52x52/f7941d/ffffff?text=SPP';" alt=""/>
         </div>
         <div class="logo-text" style="margin-left:12px;">
           <div class="brand-name" style="color:#fff;">Shrikant Paper Products</div>
@@ -738,10 +643,31 @@
       </a>
       <div class="footer-about">Authorized dealer of DOMS and Youva stationery brands. Serving students, teachers, and artists in Jalna, Maharashtra since 2008.</div>
       <div class="footer-social">
-        <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/></svg></a>
-        <a href="https://wa.me/919422218909" class="social-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
-        <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a2e"/></svg></a>
+        <!-- Facebook -->
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <!-- Instagram - fixed proper icon -->
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill:none;">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="rgba(255,255,255,0.75)" stroke="none"/>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="none"/>
+            <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="rgba(30,30,30,0.0)" stroke="rgba(30,30,30,0.8)" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="rgba(30,30,30,0.8)" stroke="none"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919422218909" class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a2e"/></svg>
+        </a>
+        <!-- Twitter/X -->
+        <a href="#" class="social-btn" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer-col">
@@ -777,7 +703,8 @@
         </div>
         <div class="contact-item">
           <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-          <div class="ci-text"><div class="ci-label">Email</div><div class="ci-val">shrikantpaperproducta@gmail.com</div></div>
+          <!-- Fixed email -->
+          <div class="ci-text"><div class="ci-label">Email</div><div class="ci-val">shrikantpaperproducts@gmail.com</div></div>
         </div>
         <div class="contact-item">
           <div class="ci-icon"><i class="fas fa-clock"></i></div>
@@ -801,7 +728,7 @@
   <span class="floating-badge" id="floatBadge">0</span>
 </button>
 
-<!-- BACK TO TOP -->
+<!-- BACK TO TOP - centered at bottom -->
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <i class="fas fa-chevron-up"></i>
 </button>
@@ -809,27 +736,37 @@
 <!-- TOAST -->
 <div class="toast" id="toast">
   <i class="fas fa-check-circle"></i>
-  <span id="toastMsg">Item added to cart!</span>
+  <span id="toastMsg">Done!</span>
 </div>
 
 <script>
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════
+   BRAND LOGO URLS
+═══════════════════════════ */
+const BRAND_LOGOS = {
+  doms:  'https://domsindia.com/wp-content/uploads/2023/08/NEW-2024-DOMS-LOGO-CORRECTION.webp',
+  youva: 'https://www.navneetstore.com/cdn/shop/files/youva_logo_withBaseline_639ab5b7-c771-41b3-88e2-29f8a6d0673d_100x.png'
+};
+
+/* ═══════════════════════════
    STATE
-═══════════════════════════════════════════ */
-let ALL     = [];          // all products from both JSONs
-let cartCount = 0;
+═══════════════════════════ */
+let ALL        = [];
+let cartCount  = 0;
 let slideIndex = 0;
 let slideTimer;
-let currentFilter = { brand:'all', cat:'all', sort:'featured' };
+let currentFilter   = { brand:'all', cat:'all', sort:'featured', mode:'popular' };
+let showingAll      = false;
+const PAGE_SIZE     = 8;
 
-/* ═══════════════════════════════════════════
-   1. FETCH & NORMALIZE JSON
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   FETCH JSON
+═══════════════════════════ */
 async function loadProducts() {
   try {
     const [r1, r2] = await Promise.all([
-      fetch('https://shrikantpaperproducts.github.io/resources/doms.json'),
-      fetch('https://shrikantpaperproducts.github.io/resources/youva.json')
+      fetch('https://rutunjay651.github.io/spp/website/doms.json'),
+      fetch('https://rutunjay651.github.io/spp/website/youva.json')
     ]);
     if (!r1.ok) throw new Error('doms.json ' + r1.status);
     if (!r2.ok) throw new Error('youva.json ' + r2.status);
@@ -837,7 +774,6 @@ async function loadProducts() {
     const domsRaw  = await r1.json();
     const youvaRaw = await r2.json();
 
-    /* normalize using EXACT field names from JSON */
     ALL = [
       ...domsRaw.map(p  => normalize(p,  'doms')),
       ...youvaRaw.map(p => normalize(p, 'youva'))
@@ -845,38 +781,40 @@ async function loadProducts() {
 
     console.log('✅ Loaded:', ALL.length, 'products');
     updateCategoryCounts();
+    renderFeaturedGrid();
 
   } catch(e) {
-    console.error('❌ Load error:', e);
+    console.error('❌', e);
+    document.getElementById('productGrid').innerHTML =
+      `<div class="empty-state"><i class="fas fa-exclamation-circle"></i><h3>Could not load products</h3></div>`;
   }
 }
 
 function normalize(p, brandKey) {
   return {
-    id:       p.id,
-    code:     p.code      || '',
-    name:     p.name      || '',
-    brand:    brandKey,                       // 'doms' or 'youva'
-    brandLabel: p.brand   || brandKey,        // "DOMS" or "Youva · Navneet"
-    price:    p.price      != null ? parseFloat(p.price) : null,
-    mrp:      p.originalPrice != null ? parseFloat(p.originalPrice) : null,
-    discount: p.discountPercent,
-    rating:   p.rating    || 4.0,
-    badge:    p.badge      || null,
-    img:      p.img        || '',
-    cat:      p.cat        || '',
-    tags:     Array.isArray(p.tags) ? p.tags : []
+    id:         p.id,
+    code:       p.code       || '',
+    name:       p.name       || '',
+    brand:      brandKey,
+    brandLabel: p.brand      || brandKey,
+    price:      p.price != null ? parseFloat(p.price) : null,
+    mrp:        p.originalPrice != null ? parseFloat(p.originalPrice) : null,
+    discount:   p.discountPercent,
+    rating:     p.rating     || 4.0,
+    badge:      p.badge      || null,
+    img:        p.img        || '',
+    cat:        p.cat        || '',
+    tags:       Array.isArray(p.tags) ? p.tags : []
   };
 }
 
-/* ═══════════════════════════════════════════
-   2. BUILD PRODUCT CARD HTML
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   BUILD CARD
+═══════════════════════════ */
 function buildCard(p) {
-  const brandClass = p.brand;
-  const brandLabel = p.brand === 'doms' ? 'DOMS' : 'Youva';
+  const brandLogo = BRAND_LOGOS[p.brand] || '';
+  const brandAlt  = p.brand === 'doms' ? 'DOMS' : 'Youva';
 
-  /* badge */
   let badgeHtml = '';
   if (p.badge) {
     const bc = p.badge.toLowerCase() === 'stellar' ? 'badge-stellar'
@@ -885,7 +823,6 @@ function buildCard(p) {
     badgeHtml = `<span class="prod-badge ${bc}">${p.badge}</span>`;
   }
 
-  /* price */
   let priceHtml = '';
   if (p.price != null && p.price > 0) {
     priceHtml = `<div class="prod-price">₹${p.price.toFixed(2)}</div>`;
@@ -898,27 +835,22 @@ function buildCard(p) {
     priceHtml = `<div class="prod-price-na">Price on enquiry</div>`;
   }
 
-  /* button */
-  const btnHtml = (p.price != null && p.price > 0)
-    ? `<button class="btn-add-cart" onclick="addToCart(this,'${p.name.replace(/'/g,"\\'")}')"><i class="fas fa-cart-plus"></i>Add to Cart</button>`
-    : `<button class="btn-enquire" onclick="enquire('${p.name.replace(/'/g,"\\'")}')"><i class="fas fa-phone-alt"></i>Enquire</button>`;
-
-  /* stars */
-  const full = Math.floor(p.rating);
-  const half = p.rating % 1 >= 0.5 ? 1 : 0;
+  const full  = Math.floor(p.rating);
+  const half  = p.rating % 1 >= 0.5 ? 1 : 0;
   const empty = 5 - full - half;
   const stars = '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
 
-  /* img */
   const imgSrc = p.img || `https://placehold.co/280x210/f3f4f6/888?text=${encodeURIComponent(p.name.slice(0,10))}`;
-
-  /* cat label */
   const catLabel = p.cat.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 
   return `
     <div class="product-card" data-brand="${p.brand}" data-cat="${p.cat}">
       ${badgeHtml}
-      <span class="prod-brand-tag ${brandClass}">${brandLabel}</span>
+      <div class="prod-brand-tag">
+        <img src="${brandLogo}" alt="${brandAlt}"
+             onerror="this.onerror=null;this.style.display='none';this.nextSibling.style.display='inline';">
+        <span style="display:none;font-size:.62rem;font-weight:700;color:var(--dark);">${brandAlt}</span>
+      </div>
       <div class="prod-img">
         <img src="${imgSrc}"
              onerror="this.onerror=null;this.src='https://placehold.co/280x210/f3f4f6/888?text=No+Image';"
@@ -926,7 +858,7 @@ function buildCard(p) {
         <div class="prod-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
       </div>
       <div class="prod-body">
-        <div class="prod-category">${brandLabel} · ${catLabel}</div>
+        <div class="prod-category">${brandAlt} · ${catLabel}</div>
         <div class="prod-code">${p.code}</div>
         <div class="prod-name">${p.name}</div>
         <div class="prod-rating">
@@ -934,14 +866,18 @@ function buildCard(p) {
           <span class="rating-count">(${p.rating})</span>
         </div>
         <div class="prod-price-row">${priceHtml}</div>
-        ${btnHtml}
+        <button class="btn-view" onclick="viewProduct('${p.name.replace(/'/g,"\\'")}')">View</button>
       </div>
     </div>`;
 }
 
-/* ═══════════════════════════════════════════
-   3. SEARCH  — searches name, code, cat, tags
-═══════════════════════════════════════════ */
+function viewProduct(name) {
+  showToast('Viewing: ' + name);
+}
+
+/* ═══════════════════════════
+   SEARCH
+═══════════════════════════ */
 const searchInput    = document.getElementById('searchInput');
 const searchBtn      = document.getElementById('searchBtn');
 const searchDropdown = document.getElementById('searchDropdown');
@@ -949,22 +885,18 @@ const searchSection  = document.getElementById('searchResultsSection');
 const searchGrid     = document.getElementById('searchResultsGrid');
 const searchTitle    = document.getElementById('searchResultsTitle');
 
-/* Live dropdown as user types */
 searchInput.addEventListener('input', function() {
   const q = this.value.trim().toLowerCase();
   if (q.length < 2) { closeDropdown(); return; }
-
   if (!ALL.length) {
     searchDropdown.innerHTML = `<div class="search-no-results"><i class="fas fa-spinner fa-spin"></i> Loading…</div>`;
     searchDropdown.classList.add('active');
     return;
   }
-
   const hits = matchProducts(q, ALL).slice(0, 8);
   renderDropdown(hits, q);
 });
 
-/* Enter or button → full results */
 searchBtn.addEventListener('click', doSearch);
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
 
@@ -972,42 +904,31 @@ function doSearch() {
   const q = searchInput.value.trim();
   closeDropdown();
   if (!q) { clearSearch(); return; }
-
   const hits = matchProducts(q.toLowerCase(), ALL);
   showSearchResults(hits, q);
 }
 
-/* Core match function — checks name, code, cat, tags, brand */
 function matchProducts(q, list) {
   return list.filter(p =>
-    p.name.toLowerCase().includes(q)                      ||
-    p.code.toLowerCase().includes(q)                      ||
-    p.cat.toLowerCase().replace(/_/g,' ').includes(q)     ||
-    p.brand.toLowerCase().includes(q)                     ||
-    p.brandLabel.toLowerCase().includes(q)                ||
+    p.name.toLowerCase().includes(q)                   ||
+    p.code.toLowerCase().includes(q)                   ||
+    p.cat.toLowerCase().replace(/_/g,' ').includes(q)  ||
+    p.brand.toLowerCase().includes(q)                  ||
+    p.brandLabel.toLowerCase().includes(q)             ||
     p.tags.some(t => t.toLowerCase().includes(q))
   );
 }
 
 function showSearchResults(hits, q) {
-  /* hide main sections, show results */
   document.getElementById('products-section').style.display = 'none';
   searchSection.style.display = 'block';
-
   searchTitle.innerHTML = `<span>${hits.length}</span> result${hits.length !== 1 ? 's' : ''} for "<span>${q}</span>"`;
-
   if (!hits.length) {
-    searchGrid.innerHTML = `
-      <div class="empty-state">
-        <i class="fas fa-search"></i>
-        <h3>No results found for "${q}"</h3>
-        <p>Try different keywords, product codes, or category names.</p>
-      </div>`;
+    searchGrid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h3>No results for "${q}"</h3><p>Try different keywords or product codes.</p></div>`;
     return;
   }
-
   searchGrid.innerHTML = hits.map(p => buildCard(p)).join('');
-  searchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  searchSection.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
 function clearSearch() {
@@ -1017,7 +938,6 @@ function clearSearch() {
   document.getElementById('products-section').style.display = 'block';
 }
 
-/* Dropdown render */
 function renderDropdown(hits, q) {
   if (!hits.length) {
     searchDropdown.innerHTML = `<div class="search-no-results"><i class="fas fa-search"></i>No results for "<strong>${q}</strong>"</div>`;
@@ -1026,23 +946,21 @@ function renderDropdown(hits, q) {
   }
 
   const header = `<div class="search-results-header">Suggestions<span>${hits.length} found</span></div>`;
-
   const items = hits.map(p => {
     const off = (p.mrp && p.mrp > p.price && p.price)
       ? Math.round(((p.mrp - p.price) / p.mrp) * 100) : 0;
-    const imgSrc = p.img || `https://placehold.co/52x52/f3f4f6/888?text=${p.brand.toUpperCase()}`;
-    const priceStr = p.price ? `₹${p.price.toFixed(2)}` : 'On enquiry';
-
+    const imgSrc   = p.img || `https://placehold.co/52x52/f3f4f6/888?text=${p.brand.toUpperCase()}`;
+    const priceStr = p.price && p.price > 0 ? `₹${p.price.toFixed(2)}` : 'On enquiry';
+    const logoUrl  = BRAND_LOGOS[p.brand] || '';
     return `
       <div class="search-result-item" onclick="selectDropdownItem('${p.name.replace(/'/g,"\\'")}')">
-        <img class="sri-img"
-             src="${imgSrc}"
-             onerror="this.src='https://placehold.co/52x52/f3f4f6/888?text=IMG';"
-             alt="${p.name}"/>
+        <img class="sri-img" src="${imgSrc}"
+             onerror="this.src='https://placehold.co/52x52/f3f4f6/888?text=IMG';" alt="${p.name}"/>
         <div class="sri-info">
           <div class="sri-name">${highlight(p.name, q)}</div>
           <div class="sri-meta">
-            <span class="sri-brand ${p.brand}">${p.brand === 'doms' ? 'DOMS' : 'Youva'}</span>
+            <img class="sri-brand-logo" src="${logoUrl}" alt="${p.brand}"
+                 onerror="this.style.display='none';">
             <span class="sri-code">${p.code}</span>
             <span class="sri-price">${priceStr}</span>
             ${off > 0 ? `<span class="sri-off">${off}% off</span>` : ''}
@@ -1052,7 +970,6 @@ function renderDropdown(hits, q) {
   }).join('');
 
   const viewAll = `<div class="search-view-all" onclick="doSearch()">View all results for "<strong>${q}</strong>" →</div>`;
-
   searchDropdown.innerHTML = header + items + viewAll;
   searchDropdown.classList.add('active');
 }
@@ -1077,22 +994,66 @@ document.addEventListener('click', e => {
   if (!document.getElementById('searchBarWrap').contains(e.target)) closeDropdown();
 });
 
-/* ═══════════════════════════════════════════
-   4. FILTER TABS (featured products grid)
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   FILTER TABS
+═══════════════════════════ */
 function filterTab(btn, value) {
   document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  const brandValues = ['all','doms','youva'];
-  if (brandValues.includes(value)) {
+  showingAll = false;
+  currentFilter.sort = document.getElementById('sortSelect').value;
+
+  if (value === 'popular') {
+    currentFilter.mode  = 'popular';
+    currentFilter.brand = 'all';
+    currentFilter.cat   = 'all';
+  } else if (['doms','youva'].includes(value)) {
+    currentFilter.mode  = 'brand';
     currentFilter.brand = value;
     currentFilter.cat   = 'all';
   } else {
-    currentFilter.cat   = value;
+    currentFilter.mode  = 'cat';
     currentFilter.brand = 'all';
+    currentFilter.cat   = value;
   }
   renderFeaturedGrid();
+}
+
+/* Category cards below hero trigger filter tab */
+function filterByCat(cat) {
+  showingAll = false;
+  currentFilter.mode  = 'cat';
+  currentFilter.cat   = cat;
+  currentFilter.brand = 'all';
+  clearSearch();
+
+  /* Activate matching tab if exists */
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-tab').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${cat}'`)) {
+      b.classList.add('active');
+    }
+  });
+
+  renderFeaturedGrid();
+  document.getElementById('products-section').scrollIntoView({ behavior:'smooth' });
+}
+
+function filterByBrand(brand) {
+  showingAll = false;
+  currentFilter.mode  = 'brand';
+  currentFilter.brand = brand;
+  currentFilter.cat   = 'all';
+  clearSearch();
+
+  document.querySelectorAll('.filter-tab').forEach(b => {
+    b.classList.toggle('active',
+      b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${brand}'`));
+  });
+
+  renderFeaturedGrid();
+  document.getElementById('products-section').scrollIntoView({ behavior:'smooth' });
 }
 
 function applySort() {
@@ -1100,34 +1061,18 @@ function applySort() {
   renderFeaturedGrid();
 }
 
-function filterByCat(cat) {
-  currentFilter.cat   = cat;
-  currentFilter.brand = 'all';
-  clearSearch();
-  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-
-  let filtered = getFilteredList();
-  document.getElementById('productGrid').innerHTML = filtered.map(p => buildCard(p)).join('');
-  document.getElementById('products-section').scrollIntoView({ behavior:'smooth' });
-}
-
-function filterByBrand(brand) {
-  currentFilter.brand = brand;
-  currentFilter.cat   = 'all';
-  clearSearch();
-
-  document.querySelectorAll('.filter-tab').forEach(b => {
-    b.classList.toggle('active', b.textContent.toLowerCase().includes(brand));
-  });
-
-  renderFeaturedGrid();
-  document.getElementById('products-section').scrollIntoView({ behavior:'smooth' });
-}
-
 function getFilteredList() {
   let list = [...ALL];
-  if (currentFilter.brand !== 'all') list = list.filter(p => p.brand === currentFilter.brand);
-  if (currentFilter.cat   !== 'all') list = list.filter(p => p.cat === currentFilter.cat || p.cat.includes(currentFilter.cat));
+
+  if (currentFilter.mode === 'popular') {
+    /* Show a mix: top-rated / first items from each brand */
+    list = list.slice(0, 80);
+  } else if (currentFilter.mode === 'brand') {
+    list = list.filter(p => p.brand === currentFilter.brand);
+  } else if (currentFilter.mode === 'cat') {
+    list = list.filter(p =>
+      p.cat === currentFilter.cat || p.cat.includes(currentFilter.cat));
+  }
 
   if (currentFilter.sort === 'low')  list.sort((a,b) => (a.price||9999) - (b.price||9999));
   if (currentFilter.sort === 'high') list.sort((a,b) => (b.price||0)    - (a.price||0));
@@ -1139,16 +1084,33 @@ function renderFeaturedGrid() {
   if (!ALL.length) return;
   const list = getFilteredList();
   const grid = document.getElementById('productGrid');
+  const viewAllWrap = document.getElementById('viewAllWrap');
+
   if (!list.length) {
     grid.innerHTML = `<div class="empty-state"><i class="fas fa-box-open"></i><h3>No products found</h3><p>Try a different filter.</p></div>`;
+    viewAllWrap.style.display = 'none';
     return;
   }
-  grid.innerHTML = list.map(p => buildCard(p)).join('');
+
+  const toShow = showingAll ? list : list.slice(0, PAGE_SIZE);
+  grid.innerHTML = toShow.map(p => buildCard(p)).join('');
+
+  /* Show "View All" only if there are more than 8 */
+  if (!showingAll && list.length > PAGE_SIZE) {
+    viewAllWrap.style.display = 'block';
+  } else {
+    viewAllWrap.style.display = 'none';
+  }
 }
 
-/* ═══════════════════════════════════════════
-   5. CATEGORY COUNTS
-═══════════════════════════════════════════ */
+function showAllProducts() {
+  showingAll = true;
+  renderFeaturedGrid();
+}
+
+/* ═══════════════════════════
+   CATEGORY COUNTS
+═══════════════════════════ */
 function updateCategoryCounts() {
   const cats = ['notebooks','pencils','colours','kits','markers','geometry_boxes'];
   cats.forEach(cat => {
@@ -1159,9 +1121,9 @@ function updateCategoryCounts() {
   });
 }
 
-/* ═══════════════════════════════════════════
-   6. CART & WISHLIST
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   CART & WISHLIST
+═══════════════════════════ */
 function addToCart(btn, name) {
   cartCount++;
   document.getElementById('cartBadge').textContent  = cartCount;
@@ -1171,10 +1133,6 @@ function addToCart(btn, name) {
 
 function openCart() {
   showToast('Cart has ' + cartCount + ' item(s)');
-}
-
-function enquire(name) {
-  showToast('Call us for pricing: +91 94222 18909');
 }
 
 function toggleWishlist(el) {
@@ -1188,9 +1146,9 @@ function toggleWishlist(el) {
   }
 }
 
-/* ═══════════════════════════════════════════
-   7. TOAST
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   TOAST
+═══════════════════════════ */
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -1200,34 +1158,52 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-/* ═══════════════════════════════════════════
-   8. HERO SLIDER
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   HERO SLIDER
+═══════════════════════════ */
 function goSlide(n) {
   slideIndex = n;
   document.getElementById('slides').style.transform = `translateX(-${n*100}%)`;
   document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === n));
   resetSlideTimer();
+
+  /* Restart typewriter on active slide */
+  restartTypewriter(n);
 }
+
 function changeSlide(dir) {
   const total = document.querySelectorAll('.slide').length;
   goSlide((slideIndex + dir + total) % total);
 }
+
 function resetSlideTimer() {
   clearInterval(slideTimer);
-  slideTimer = setInterval(() => changeSlide(1), 5000);
+  slideTimer = setInterval(() => changeSlide(1), 6000);
 }
 
-/* ═══════════════════════════════════════════
-   9. BACK TO TOP
-═══════════════════════════════════════════ */
+/* Typewriter: reset animations */
+function restartTypewriter(slideIdx) {
+  const titleId = slideIdx === 0 ? 'slide1-title' : 'slide2-title';
+  const el = document.getElementById(titleId);
+  if (!el) return;
+  const lines = el.querySelectorAll('.typewriter-line');
+  lines.forEach(line => {
+    line.style.animation = 'none';
+    line.offsetHeight; /* reflow */
+    line.style.animation = '';
+  });
+}
+
+/* ═══════════════════════════
+   BACK TO TOP
+═══════════════════════════ */
 window.addEventListener('scroll', () => {
   document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
 });
 
-/* ═══════════════════════════════════════════
-   10. INIT
-═══════════════════════════════════════════ */
+/* ═══════════════════════════
+   INIT
+═══════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   loadProducts();
   resetSlideTimer();
